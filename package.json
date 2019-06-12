@@ -1,0 +1,52 @@
+{
+  "name": "l-reader",
+  "version": "1.0.0",
+  "description": "PC online reader",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./build/server.js",
+    "test": "eslint src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DrugsZ/LReader.git"
+  },
+  "keywords": [
+    "reader"
+  ],
+  "author": "DrugsZ",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/DrugsZ/LReader/issues"
+  },
+  "homepage": "https://github.com/DrugsZ/LReader#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "cz-conventional-changelog": "^2.1.0",
+    "eslint": "^5.16.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.17.3",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.13.0",
+    "html-webpack-plugin": "^3.2.0",
+    "husky": "^2.4.0",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3",
+    "webpack-dev-server": "^3.7.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
