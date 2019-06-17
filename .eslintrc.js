@@ -5,6 +5,7 @@ module.exports = {
       "node": true
     },
     "rules":{
-      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}]
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
     }
 };
