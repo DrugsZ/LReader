@@ -9,7 +9,7 @@ const compiler = Webpack(webpackConfig);
 //     colors: true,
 //   },
 // });
-const server = new WebpackDevServer(compiler);
+const server = new WebpackDevServer(compiler, webpackConfig.devServer);
 
 server.listen(8080, '127.0.0.1', () => {
   console.log('Starting server on http://localhost:8080');
