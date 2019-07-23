@@ -15,6 +15,8 @@ module.exports = {
         "libraryName": "antd",
         "style": 'css',
       }
-    ]
-  ]
+    ],
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+  ],
 };
