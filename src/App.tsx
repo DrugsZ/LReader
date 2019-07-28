@@ -5,7 +5,7 @@ import "./index.less";
 
 const menus: MenuItem[] = [
   {
-    logo: "icon-shujia",
+    logo: "icon-shujia1",
     name: "书架"
   },
   {
