@@ -12,6 +12,7 @@ module.exports = {
     },
     "rules":{
       "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
-      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }]
+      "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }],
+      "@typescript-eslint/explicit-function-return-type": "off"
     },
 };
