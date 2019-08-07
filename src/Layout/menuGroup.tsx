@@ -47,7 +47,7 @@ class MenuGroup extends React.Component<MenuGroupProps, MenuGroupState> {
     return React.Children.map(children, (menu, i) => {
       return React.cloneElement(menu as React.ComponentElement<CloneMenuProps, any>, {
         select: selectKey === i,
-        onClick: this.handleSelect.bind(this),
+        onClick: this.handleSelect.bind(this, i),
       });
     });
   }

@@ -18,5 +18,7 @@ module.exports = {
     ],
     "@babel/proposal-class-properties",
     "@babel/proposal-object-rest-spread",
+    ["@babel/plugin-proposal-decorators", {"decoratorsBeforeExport":true}],
+    "react-hot-loader/babel"
   ],
 };

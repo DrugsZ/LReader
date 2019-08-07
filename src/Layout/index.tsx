@@ -14,24 +14,19 @@ interface SliderProps {
 const Sliders = (props: SliderProps): JSX.Element => {
   const { width, menus } = props;
   return (
-    <Layout>
-      <Sider
-        width={width}
-        style={{
-          overflow: "auto",
-          height: "100vh",
-          position: "fixed",
-          left: 0
-        }}
-      >
-        <MenuGroup>
-          {menus.map((menu: MenuItem) => {
-            const { logo, name } = menu;
-            return <Menu key={name} logo={logo} name={name} />;
-          })}
-        </MenuGroup>
-      </Sider>
-    </Layout>
+    <Sider
+      width={width}
+      style={{
+        backgroundColor: "#a0d911",
+      }}
+    >
+      <MenuGroup>
+        {menus.map((menu: MenuItem, i: number) => {
+          const { logo, name } = menu;
+          return <Menu key={name} logo={logo} name={name} />;
+        })}
+      </MenuGroup>
+    </Sider>
   );
 };
 export default Sliders;
