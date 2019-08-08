@@ -2,7 +2,7 @@ import { render } from "react-dom";
 import * as React from "react";
 import { Layout } from "antd";
 import { hot } from "react-hot-loader/root";
-import { Route, BrowserRouter as Router, Link } from "react-router-dom";
+import { Route, BrowserRouter as Router } from "react-router-dom";
 import Sliders, { MenuItem } from "./Layout";
 import Books from "./books";
 import Popular from "./popular";
@@ -12,14 +12,17 @@ const menus: MenuItem[] = [
   {
     logo: "icon-shujia1",
     name: "书架",
+    path: "/books",
   },
   {
     logo: "icon-fenlei-remen",
     name: "热门",
+    path: "popular",
   },
   {
     logo: "icon-shezhi",
     name: "设置",
+    path: "test",
   },
 ];
 
@@ -35,7 +38,7 @@ class App extends React.Component {
             height: "100%",
           }}
         >
-          <Sliders width={160} menus={menus} />
+          <Sliders width={60} menus={menus} />
           <Layout>
             <Route exact path="/books" component={Books} />
             <Route path="/popular" component={Popular} />

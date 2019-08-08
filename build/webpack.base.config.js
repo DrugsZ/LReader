@@ -12,13 +12,16 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    contentBase: "./dist",
+    contentBase: `${__dirname}../dist`,
     open: true,
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],
+    alias: {
+      CONFIG: path.resolve(`${__dirname}../src/config.json`),
+    },
   },
   module: {
     rules: [
@@ -44,6 +47,10 @@ module.exports = {
             loader: "less-loader",
           },
         ],
+      },
+      {
+        test: /\.(png|jpg)$/,
+        loader: "url-loader?limit=8192",
       },
     ],
   },

@@ -1,15 +1,20 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
+import Book from "./book";
 import "./index.less";
 
 const Books: React.FunctionComponent = props => {
   const { children } = props;
   return (
     <div className="books">
-      <span>yhhgngjhgj</span>
-      <span>yhhgngjhgj</span>
-      <span>yhhgngjhgj</span>
-      {React.Children.map(children, child => child)}
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
+      <Book />
     </div>
   );
 };

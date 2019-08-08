@@ -10,20 +10,28 @@ const IconFont = Icon.createFromIconfontCN({
 export interface MenuItem {
   logo: string;
   name: string;
+  path: string;
   select?: boolean;
-  onClick?: (e?: React.ChangeEvent) => void;
+  onClick?: (path: string, e?: React.MouseEvent) => void;
 }
 
 interface MenuState {
   hasTwoCnChar: boolean;
 }
 
-export const Menu = (props: MenuItem): JSX.Element => {
-  const { logo, name, select, onClick } = props;
+export const Menu: React.FC<MenuItem> = props => {
+  const { logo, name, select, onClick, path } = props;
   const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
   const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
   return (
-    <div className="menu-item" role="presentation" onClick={onClick}>
+    <div
+      className="menu-item"
+      role="presentation"
+      onClick={e => {
+        onClick(path, e);
+        console.log(path);
+      }}
+    >
       <IconFont className="logo" type={logo} />
       <span
         className={classNames({

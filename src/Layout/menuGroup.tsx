@@ -3,6 +3,7 @@ import * as PropTypes from "prop-types";
 
 interface MenuGroupProps {
   defaultSelectedKey?: number;
+  onClick?: (path: string, e?: React.MouseEvent) => void;
 }
 
 interface MenuGroupState {
@@ -11,7 +12,7 @@ interface MenuGroupState {
 
 export interface CloneMenuProps {
   select: boolean;
-  onClick?: (selectKey: number | string, e?: React.ChangeEvent) => void;
+  onClick?: (path: string, e?: React.MouseEvent) => void;
 }
 
 /**
@@ -44,10 +45,14 @@ class MenuGroup extends React.Component<MenuGroupProps, MenuGroupState> {
 
   renderMenuItem(children: React.ReactNode) {
     const { selectKey } = this.state;
+    const { onClick: patentClickHandle } = this.props;
     return React.Children.map(children, (menu, i) => {
       return React.cloneElement(menu as React.ComponentElement<CloneMenuProps, any>, {
         select: selectKey === i,
-        onClick: this.handleSelect.bind(this, i),
+        onClick: (path: string, e: React.MouseEvent) => {
+          this.handleSelect.bind(this, i);
+          patentClickHandle(path, e);
+        },
       });
     });
   }
