@@ -5,16 +5,16 @@ const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: ["react-hot-loader/patch", "./src/App.tsx"],
+  entry: ["react-hot-loader/patch", "webpack-hot-middleware/client?noInfo=true&reload=true", "./src/App.tsx"],
   output: {
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(__dirname, "../dist"),
     filename: "my-first-webpack.bundle.js",
   },
   devtool: "inline-source-map",
   devServer: {
     contentBase: `${__dirname}../dist`,
     open: true,
-    hot: true,
+    // hot: true,
     historyApiFallback: true,
   },
   resolve: {
