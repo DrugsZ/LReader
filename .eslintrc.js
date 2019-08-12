@@ -14,6 +14,10 @@ module.exports = {
       "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
       "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", "ts", "tsx"] }],
       "@typescript-eslint/explicit-function-return-type": "off",
-      "@typescript-eslint/explicit-member-accessibility": "off"
-    },
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/no-var-requires":"off",
+      "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+      "import/no-unresolved": "off",
+      "react/prop-types":"off" //bacause eslint hard to detect is we are in a stateless component
+     },
 };
