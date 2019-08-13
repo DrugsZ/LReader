@@ -1,11 +1,12 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const FriendlyErrorsWebpackPlugin = require("friendly-errors-webpack-plugin");
 const path = require("path");
 const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: ["react-hot-loader/patch", "webpack-hot-middleware/client?noInfo=true&reload=true", "./src/App.tsx"],
+  entry: ["react-hot-loader/patch", "webpack-hot-middleware/client?noInfo=true&reload=true", "./src/main.tsx"],
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "my-first-webpack.bundle.js",
@@ -60,6 +61,7 @@ module.exports = {
       template: path.resolve(__dirname, "../public/index.html"),
       inject: true,
     }),
+    new FriendlyErrorsWebpackPlugin(),
     new HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
   ],
