@@ -15,11 +15,7 @@ export interface MenuItem {
   onClick?: (path: string, e?: React.MouseEvent) => void;
 }
 
-interface MenuState {
-  hasTwoCnChar: boolean;
-}
-
-export const Menu: React.FC<MenuItem> = props => {
+const Menu: React.FC<MenuItem> = props => {
   const { logo, name, select, onClick, path } = props;
   const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;
   const isTwoCNChar = rxTwoCNChar.test.bind(rxTwoCNChar);
@@ -29,7 +25,6 @@ export const Menu: React.FC<MenuItem> = props => {
       role="presentation"
       onClick={e => {
         onClick(path, e);
-        console.log(path);
       }}
     >
       <IconFont className="logo" type={logo} />
@@ -47,3 +42,5 @@ export const Menu: React.FC<MenuItem> = props => {
 };
 
 Menu.Group = MenuGroup;
+
+export default Menu;

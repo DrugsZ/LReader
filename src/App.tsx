@@ -1,4 +1,3 @@
-import { render } from "react-dom";
 import * as React from "react";
 import { Layout } from "antd";
 import { hot } from "react-hot-loader/root";
@@ -27,7 +26,7 @@ const menus: MenuItem[] = [
 ];
 
 @hot
-class App extends React.Component {
+export default class App extends React.Component {
   public state = {};
 
   public render(): JSX.Element {
@@ -48,5 +47,3 @@ class App extends React.Component {
     );
   }
 }
-
-render(<App />, document.getElementById("app"));

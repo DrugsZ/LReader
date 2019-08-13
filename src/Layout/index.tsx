@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Layout } from "antd";
+import { Layout, Slider } from "antd";
+import PropTypes from "prop-types";
 import "./index.less";
 import { RouteComponentProps, withRouter } from "react-router-dom";
-import { MenuItem, Menu } from "./menu";
+import Menu, { MenuItem } from "./menu";
 
 const { Sider } = Layout;
 const { Group: MenuGroup } = Menu;
@@ -14,7 +15,6 @@ interface SliderProps {
 
 const Sliders: React.FC<SliderProps & RouteComponentProps> = props => {
   const { width, menus, history } = props;
-  console.log(props);
   return (
     <Sider
       width={width}
@@ -25,7 +25,6 @@ const Sliders: React.FC<SliderProps & RouteComponentProps> = props => {
       <MenuGroup
         onClick={(pathName: string) => {
           history.push(pathName);
-          console.log(pathName);
         }}
       >
         {menus.map((menu: MenuItem, i: number) => {
@@ -36,5 +35,6 @@ const Sliders: React.FC<SliderProps & RouteComponentProps> = props => {
     </Sider>
   );
 };
+
 export default withRouter(Sliders);
 export { MenuItem };
