@@ -1,14 +1,17 @@
 const express = require("express");
 const bodyParser = require("body-parser");
-const { books } = require("./route");
-const applyMiddlewareAboutWebpack = require("../webpack/compiler");
+const session = require("express-session");
+// const cookieParser = require("cookie-parser");
+const { books, isinit } = require("./route");
+// const applyMiddlewareAboutWebpack = require("../webpack/compiler");
 
 class Server {
   constructor() {
     this.app = express();
-    if (process.env.NODE_ENV !== "production") {
-      applyMiddlewareAboutWebpack(this.app);
-    }
+    this.injectMiddleware();
+    // if (process.env.NODE_ENV !== "production") {
+    //   applyMiddlewareAboutWebpack(this.app);
+    // }
     this.injectRoutes();
     this.app.use(bodyParser.urlencoded({ extended: true })); // 通常 POST 内容的格式是 application/x-www-form-urlencoded
 
@@ -17,11 +20,22 @@ class Server {
     });
   }
 
-  // injectMiddleware() {}
+  injectMiddleware() {
+    const { app } = this;
+    // app.use(cookieParser("sessiontest"));
+    app.use(
+      session({
+        secret: "sessiontest", // 与cookieParser中的一致
+        resave: true,
+        saveUninitialized: true,
+      }),
+    );
+  }
 
   injectRoutes() {
     const { app } = this;
-    app.use("/books", books);
+    app.use("/api/books", books);
+    app.use("/api/isinit", isinit);
   }
 }
 
