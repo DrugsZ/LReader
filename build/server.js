@@ -3,12 +3,6 @@ const WebpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("./webpack.base.config");
 
 const compiler = Webpack(webpackConfig);
-// const devServerOptions = Object.assign({}, webpackConfig, {
-//   open: true,
-//   stats: {
-//     colors: true,
-//   },
-// });
 const server = new WebpackDevServer(compiler, webpackConfig.devServer);
 
 console.log(`${__dirname}../src/config.json`);

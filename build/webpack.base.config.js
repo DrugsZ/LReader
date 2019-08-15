@@ -15,8 +15,14 @@ module.exports = {
   devServer: {
     contentBase: `${__dirname}../dist`,
     open: true,
-    // hot: true,
+    hot: true,
+    quiet: true,
     historyApiFallback: true,
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:3000",
+      },
+    },
   },
   resolve: {
     extensions: [".ts", ".tsx", ".js", ".json", ".jsx"],

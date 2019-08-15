@@ -4,6 +4,7 @@
   "description": "PC online reader",
   "main": "main.js",
   "scripts": {
+    "client": "webpack-dev-server --config ./build/webpack.base.config.js",
     "server": "node ./server/app.js",
     "start": "node ./build/server.js",
     "dev": "node ./build/dev.js",
@@ -28,7 +29,10 @@
     "body-parser": "^1.19.0",
     "classnames": "^2.2.6",
     "connect-history-api-fallback": "^1.6.0",
+    "cookie-parser": "^1.4.4",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
+    "lowdb": "^1.0.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
