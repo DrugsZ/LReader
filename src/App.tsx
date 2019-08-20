@@ -1,10 +1,11 @@
 import * as React from "react";
 import { Layout } from "antd";
-import { hot } from "react-hot-loader/root";
 import { Route, BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
 import Sliders, { MenuItem } from "./Layout";
 import Books from "./books";
 import Popular from "./popular";
+import Register from "./register";
 import "./index.less";
 
 const menus: MenuItem[] = [
@@ -25,9 +26,16 @@ const menus: MenuItem[] = [
   },
 ];
 
-@hot
 export default class App extends React.Component {
   public state = {};
+
+  componentDidMount() {
+    axios.get("/api/isinit").then(res => {
+      console.log(res);
+      const { content } = res;
+      const { exist } = res;
+    });
+  }
 
   public render(): JSX.Element {
     return (
@@ -41,6 +49,7 @@ export default class App extends React.Component {
           <Layout>
             <Route exact path="/books" component={Books} />
             <Route path="/popular" component={Popular} />
+            <Route path="/register" component={Register} />
           </Layout>
         </Layout>
       </Router>
