@@ -6,7 +6,7 @@ const { HotModuleReplacementPlugin } = require("webpack");
 
 module.exports = {
   mode: "development",
-  entry: ["react-hot-loader/patch", "webpack-hot-middleware/client?noInfo=true&reload=true", "./src/main.tsx"],
+  entry: ["react-hot-loader/patch", "./src/main.tsx"],
   output: {
     path: path.resolve(__dirname, "../dist"),
     filename: "my-first-webpack.bundle.js",
@@ -68,7 +68,7 @@ module.exports = {
       inject: true,
     }),
     new FriendlyErrorsWebpackPlugin(),
-    new HotModuleReplacementPlugin(),
+    // new HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
   ],
 };
