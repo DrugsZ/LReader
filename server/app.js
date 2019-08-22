@@ -1,19 +1,13 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-// const cookieParser = require("cookie-parser");
 const { books, isinit } = require("./route");
-// const applyMiddlewareAboutWebpack = require("../webpack/compiler");
 
 class Server {
   constructor() {
     this.app = express();
     this.injectMiddleware();
-    // if (process.env.NODE_ENV !== "production") {
-    //   applyMiddlewareAboutWebpack(this.app);
-    // }
     this.injectRoutes();
-    this.app.use(bodyParser.urlencoded({ extended: true })); // 通常 POST 内容的格式是 application/x-www-form-urlencoded
 
     this.app.listen(3000, () => {
       console.log("App is running on http://127.0.0.1:3000/");
@@ -22,14 +16,28 @@ class Server {
 
   injectMiddleware() {
     const { app } = this;
-    // app.use(cookieParser("sessiontest"));
+    // 设置session
     app.use(
       session({
-        secret: "sessiontest", // 与cookieParser中的一致
+        secret: "sessiontest",
         resave: true,
         saveUninitialized: true,
       }),
     );
+    // 设置header
+    app.all("*", (req, res, next) => {
+      if (!req.xhr) {
+        next();
+        return;
+      }
+      res.setHeader("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
+      res.setHeader("Content-Type", "application/json");
+      res.setHeader("Connection", "keep-alive");
+      next();
+    });
+    // 参数解析
+    this.app.use(bodyParser.json({ limit: "1mb" }));
+    this.app.use(bodyParser.urlencoded({ extended: true })); // 通常 POST 内容的格式是 application/x-www-form-urlencoded
   }
 
   injectRoutes() {
