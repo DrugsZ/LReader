@@ -1,17 +1,4 @@
-const { initBookSource, getBookSources } = require("../dao/bookSource");
-
-exports.initBookSource = (req, res, next) => {
-  try {
-    const books = initBookSource();
-    res.status(200).json({
-      books,
-      message: "",
-      success: true,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
+const { getBookSources } = require("../dao/bookSource");
 
 exports.getBookSources = (req, res, next) => {
   try {
