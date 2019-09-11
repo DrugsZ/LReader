@@ -1,7 +1,7 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const session = require("express-session");
-const { books, isinit } = require("./route");
+const { books, isinit, bookSource } = require("./route");
 
 class Server {
   constructor() {
@@ -10,6 +10,7 @@ class Server {
     this.injectRoutes();
 
     this.app.listen(3000, () => {
+      // eslint-disable-next-line no-console
       console.log("App is running on http://127.0.0.1:3000/");
     });
   }
@@ -40,10 +41,12 @@ class Server {
     this.app.use(bodyParser.urlencoded({ extended: true })); // 通常 POST 内容的格式是 application/x-www-form-urlencoded
   }
 
+  // 注册路由
   injectRoutes() {
     const { app } = this;
     app.use("/api/books", books);
     app.use("/api/isinit", isinit);
+    app.use("/api/book_source", bookSource);
   }
 }
 

@@ -1,8 +1,8 @@
 const low = require("lowdb");
 
-const FileAsync = require("lowdb/adapters/FileAsync");
+const FileSync = require("lowdb/adapters/FileSync");
 
-const adapter = new FileAsync("booksource.json");
+const adapter = new FileSync("booksource.json");
 const bookDb = low(adapter);
 
 module.exports = bookDb;
