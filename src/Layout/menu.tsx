@@ -15,6 +15,8 @@ export interface MenuItem {
   onClick?: (path: string, e?: React.MouseEvent) => void;
 }
 
+export const MenuItem = () => {};
+
 const Menu: React.FC<MenuItem> = props => {
   const { logo, name, select, onClick, path } = props;
   const rxTwoCNChar = /^[\u4e00-\u9fa5]{2}$/;

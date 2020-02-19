@@ -1,11 +1,12 @@
 import * as React from "react";
-import { Layout } from "antd";
-import { Route, BrowserRouter as Router } from "react-router-dom";
-import axios from "axios";
+import { Layout, Spin } from "antd";
+import { Route, HashRouter as Router, RouteComponentProps } from "react-router-dom";
+import axios, { AxiosResponse } from "axios";
 import Sliders, { MenuItem } from "./Layout";
 import Books from "./books";
 import Popular from "./popular";
 import Register from "./register";
+import { setLocal } from "./util";
 import "./index.less";
 
 const menus: MenuItem[] = [
@@ -21,19 +22,26 @@ const menus: MenuItem[] = [
   },
   {
     logo: "icon-shezhi",
-    name: "设置",
-    path: "test",
+    name: "书源管理",
+    path: "booksource",
   },
 ];
 
 export default class App extends React.Component {
-  public state = {};
+  state = {};
 
   componentDidMount() {
-    axios.get("/api/isinit").then(res => {
-      console.log(res);
-      const { content } = res;
-      const { exist } = res;
+    axios.get("/api/isinit").then((res: AxiosResponse<{ isInit: boolean; message: string; success: true }>) => {
+      const { data } = res;
+      const { isInit } = data;
+      if (isInit) {
+        setLocal("isInit", true);
+        // eslint-disable-next-line no-restricted-globals
+        location.href = "/#/books";
+      } else {
+        // eslint-disable-next-line no-restricted-globals
+        location.href = "/#/register";
+      }
     });
   }
 

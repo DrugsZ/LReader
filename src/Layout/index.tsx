@@ -1,12 +1,11 @@
 import * as React from "react";
-import { Layout, Slider } from "antd";
-import PropTypes from "prop-types";
+import { Layout } from "antd";
 import "./index.less";
 import { RouteComponentProps, withRouter } from "react-router-dom";
 import Menu, { MenuItem } from "./menu";
 
 const { Sider } = Layout;
-const { Group: MenuGroup } = Menu;
+const { Group: MenuGroup } = Menu as any;
 
 interface SliderProps {
   width?: number | string;

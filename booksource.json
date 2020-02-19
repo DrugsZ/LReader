@@ -1,0 +1,14 @@
+{
+  "bookSources": [
+    {
+      "bookSourceUrl": "https://www.biquge.com.cn/",
+      "bookSourceName": "笔趣阁",
+      "bookSourceGroup": "测试分组",
+      "ruleSearchUrl": "https://www.biquge.com.cn/search.php?keyword=sreachkey&page=one",
+      "ruleSearchList": "body > div.result-list",
+      "ruleSearchName": "div.result-game-item-detail > h3 > a > span",
+      "ruleSreachAuthor": "div.result-game-item-detail > div > p:nth-child(1) > span:nth-child(2)",
+      "ruleBookName": ""
+    }
+  ]
+}
