@@ -30,21 +30,6 @@ const menus: MenuItem[] = [
 export default class App extends React.Component {
   state = {};
 
-  componentDidMount() {
-    axios.get("/api/isinit").then((res: AxiosResponse<{ isInit: boolean; message: string; success: true }>) => {
-      const { data } = res;
-      const { isInit } = data;
-      if (isInit) {
-        setLocal("isInit", true);
-        // eslint-disable-next-line no-restricted-globals
-        location.href = "/#/books";
-      } else {
-        // eslint-disable-next-line no-restricted-globals
-        location.href = "/#/register";
-      }
-    });
-  }
-
   public render(): JSX.Element {
     return (
       <Router>
@@ -53,7 +38,7 @@ export default class App extends React.Component {
             height: "100%",
           }}
         >
-          <Sliders width={60} menus={menus} />
+          {/* <Sliders width={80} menus={menus} /> */}
           <Layout>
             <Route exact path="/books" component={Books} />
             <Route path="/popular" component={Popular} />
