@@ -1,8 +1,7 @@
 import * as React from "react";
 import { Layout, Spin } from "antd";
 import { Route, HashRouter as Router, RouteComponentProps } from "react-router-dom";
-import axios, { AxiosResponse } from "axios";
-import Sliders, { MenuItem } from "./Layout";
+import Sliders from "./Layout";
 import Books from "./books";
 import Popular from "./popular";
 import Register from "./register";
@@ -38,7 +37,7 @@ export default class App extends React.Component {
             height: "100%",
           }}
         >
-          {/* <Sliders width={80} menus={menus} /> */}
+          <Sliders menus={menus} />
           <Layout>
             <Route exact path="/books" component={Books} />
             <Route path="/popular" component={Popular} />

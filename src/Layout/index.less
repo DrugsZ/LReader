@@ -1,24 +1,18 @@
 @import "../util.less";
 
-.menu-group {
-  .isflex();
+@height: 18px;
 
-  .menu-item {
-    .isflex();
-    padding: 16px;
-    color: #ffffff;
-    cursor: pointer;
+.menu-sider {
+  .logo {
+    font-size: @height;
+  }
 
-    .logo {
-      font-size: 42px;
-    }
+  .two-chinese-chars:first-letter {
+    letter-spacing: 0.34em;
+  }
 
-    .two-chinese-chars:first-letter {
-      letter-spacing: 0.34em;
-    }
-
-    .title {
-      margin-top: 16px;
-    }
+  .title {
+    display: inline-block;
+    line-height: @height;
   }
 }
