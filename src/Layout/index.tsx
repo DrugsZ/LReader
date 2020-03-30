@@ -31,7 +31,7 @@ const Sliders: React.FC<SliderProps & RouteComponentProps> = props => {
     [history],
   );
   return (
-    <Sider width={width || 256} className="menu-sider">
+    <Sider theme="light" width={width || 256} className="menu-sider">
       <Menu>
         {menus.map(item => (
           <Menu.Item key={item.path} className="menu-item" onClick={toPath}>

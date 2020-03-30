@@ -1,35 +1,44 @@
 @import "../util.less";
+@width: 145px;
+
+.text-base {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: @width;
+  margin-top: 8px;
+}
 
 .books {
-  .isflex();
-  flex-direction: row;
-  height: 100%;
-  justify-content: flex-start;
-  align-items: flex-start;
   padding: 16px;
-  flex-wrap: wrap;
 
   .book-box {
-    .isflex();
-    flex: 0 1 20%;
-    height: 220px;
     display: flex;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 220px;
+    float: left;
+    margin-bottom: 16px;
 
     .content {
-      width: 160px;
-      height: 100%;
+      width: @width;
+      height: 215px;
       border-radius: 5px;
-      // background-color: black;
-      // margin-right: 16px;
       background-image: url("./下载.jpg");
       background-repeat: no-repeat;
       background-size: 100% 100%;
     }
 
     .name {
-      margin-top: 8px;
-      text-align: center;
+      .text-base();
+      font-size: 13px;
+    }
+
+    .author {
+      .text-base();
+      font-size: 10px;
+      color: #cccccc;
     }
   }
 }

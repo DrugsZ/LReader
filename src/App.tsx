@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Layout, Spin } from "antd";
-import { Route, HashRouter as Router, RouteComponentProps } from "react-router-dom";
+import { Route, HashRouter as Router, Redirect } from "react-router-dom";
 import Sliders from "./Layout";
 import Books from "./books";
 import Popular from "./popular";
@@ -39,6 +39,7 @@ export default class App extends React.Component {
         >
           <Sliders menus={menus} />
           <Layout>
+            <Redirect path="/" to="/books" />
             <Route exact path="/books" component={Books} />
             <Route path="/popular" component={Popular} />
             <Route path="/register" component={Register} />
