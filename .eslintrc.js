@@ -18,6 +18,7 @@ module.exports = {
       "@typescript-eslint/no-var-requires":"off",
       "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
       "import/no-unresolved": "off",
+      "no-console": "off",
       "react/prop-types":"off" //bacause eslint hard to detect is we are in a stateless component
      },
 };

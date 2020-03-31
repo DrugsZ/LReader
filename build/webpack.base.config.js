@@ -67,7 +67,7 @@ module.exports = {
       template: path.resolve(__dirname, "../public/index.html"),
       inject: true,
     }),
-    new FriendlyErrorsWebpackPlugin(),
+    // new FriendlyErrorsWebpackPlugin(),
     // new HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
   ],

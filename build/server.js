@@ -1,22 +1,44 @@
+const chalk = require("chalk");
 const Webpack = require("webpack");
-const { exec } = require("child_process");
+const { spawn } = require("child_process");
 const WebpackDevServer = require("webpack-dev-server");
 const webpackConfig = require("./webpack.base.config");
 
 process.env.NODE_ENV = "development";
 
-const compiler = Webpack(webpackConfig);
-const server = new WebpackDevServer(compiler, webpackConfig.devServer);
-
-server.listen(8080, "127.0.0.1", () => {
-  console.log("Starting server on http://localhost:8080");
-});
-
-exec("electron .", (error, stdout, stderr) => {
-  if (error) {
-    console.error(`执行的错误: ${error}`);
-    return;
+const electronLog = (data, color) => {
+  const log = data.toString();
+  if (/[0-9A-z]+/.test(log)) {
+    console.log(chalk[color](log));
   }
-  console.log(`stdout: ${stdout}`);
-  console.log(`stderr: ${stderr}`);
+};
+
+const startRender = () => {
+  return new Promise((reslove, reject) => {
+    const compiler = Webpack(webpackConfig);
+    const server = new WebpackDevServer(compiler, webpackConfig.devServer);
+
+    server.listen(8080, "127.0.0.1", () => {
+      console.log("Starting server on http://localhost:8080");
+      reslove();
+    });
+  });
+};
+
+const startElectron = () => {
+  const electronProcess = spawn(process.platform === "win32" ? "npm.cmd" : "npm", ["run", "electron"]);
+  electronProcess.stdout.on("data", data => {
+    electronLog(data, "blue");
+  });
+  electronProcess.stderr.on("data", data => {
+    electronLog(data, "red");
+  });
+
+  electronProcess.on("close", () => {
+    process.exit();
+  });
+};
+
+startRender().then(() => {
+  startElectron();
 });
